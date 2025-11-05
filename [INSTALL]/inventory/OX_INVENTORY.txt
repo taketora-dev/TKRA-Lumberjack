@@ -1,0 +1,25 @@
+-- OX INVENTORY
+
+```lua
+['wood_log'] = {
+    label = 'Batang Kayu',
+    weight = 500,
+    stack = true,
+    close = false,
+    description = 'Batang kayu hasil tebangan'
+},
+['sawdust'] = {
+    label = 'Bubuk Kayu',
+    weight = 100,
+    stack = true,
+    close = false,
+    description = 'Bubuk kayu hasil pengolahan'
+},
+['kampak'] = {
+    label = 'Kampak',
+    weight = 1000,
+    stack = false,
+    close = false,
+    description = 'Alat untuk menebang pohon'
+},
+```

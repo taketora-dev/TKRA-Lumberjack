@@ -13,11 +13,11 @@ shared_scripts {
 }
 
 client_scripts {
-	'client.lua'
+	'client/cl_lumberjack.lua'
 }
 
 server_scripts {
-	'server.lua'
+	'server/sv_lumberjack.lua'
 }
 
 dependencies {

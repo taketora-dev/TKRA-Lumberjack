@@ -56,7 +56,7 @@ local function doChopAnim(duration, onDone, onCancel)
     if resourceStarted('ox_lib') and exports.ox_lib and exports.ox_lib.progressBar then
         local success = exports.ox_lib:progressBar({
             duration = duration,
-            label = 'Menebang pohon...';
+            label = 'Menebang pohon...',
             useWhileDead = false,
             canCancel = true,
             disable = { move = true, car = true, combat = true, mouse = false },
@@ -77,7 +77,7 @@ local function doProcessAnim(duration, onDone, onCancel)
     if resourceStarted('ox_lib') and exports.ox_lib and exports.ox_lib.progressBar then
         local success = exports.ox_lib:progressBar({
             duration = duration,
-            label = 'Memproses kayu...';
+            label = 'Memproses kayu...',
             useWhileDead = false,
             canCancel = true,
             disable = { move = true, car = true, combat = true, mouse = false },

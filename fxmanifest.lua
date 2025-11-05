@@ -4,7 +4,7 @@ game 'gta5'
 name "oc-lumberjack"
 description "Simple Lumberjack (standalone, no job) with target + multi-inventory support (ox/qb/qs/codem)"
 author "Taketora"
-version "2.0.0"
+version "1.1.0"
 
 lua54 'yes'
 

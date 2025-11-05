@@ -13,7 +13,6 @@ shared_scripts {
 }
 
 server_scripts {
-	'inventory/*.lua',
 	'server/sv_lumberjack.lua'
 }
 

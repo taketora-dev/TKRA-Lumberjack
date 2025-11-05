@@ -1,4 +1,6 @@
-local ox_inventory = exports.ox_inventory
+-- Load inventory bridge based on config
+local inventoryType = Config.Inventory or "ox"
+local Inventory = require(('inventory/%s'):format(inventoryType))
 
 local treeStates = {}
 
@@ -45,7 +47,7 @@ RegisterNetEvent('lumberjack:server:chopTree', function(idx)
 
     -- Require axe item
     local axeItem = Config.AxeItem or 'kampak'
-    local axeCount = ox_inventory:Search(src, 'count', axeItem) or 0
+    local axeCount = Inventory.GetItemCount(src, axeItem)
     if axeCount <= 0 then
         TriggerClientEvent('lumberjack:client:notify', src, ('Butuh item %s untuk menebang.'):format(axeItem), 'error')
         -- re-enable the tree locally since client already locked it when starting
@@ -59,7 +61,7 @@ RegisterNetEvent('lumberjack:server:chopTree', function(idx)
 
     -- Reward logs
     local amount = math.random(Config.LogReward.min, Config.LogReward.max)
-    local added = ox_inventory:AddItem(src, Config.LogItem, amount)
+    local added = Inventory.AddItem(src, Config.LogItem, amount)
 
     if not added then
         -- If add failed, revert availability to avoid punishing player
@@ -92,24 +94,24 @@ RegisterNetEvent('lumberjack:server:processLogs', function()
     local logItem = Config.LogItem
     local sawItem = Config.SawdustItem
 
-    local count = ox_inventory:Search(src, 'count', logItem) or 0
+    local count = Inventory.GetItemCount(src, logItem)
     if count <= 0 then
         TriggerClientEvent('lumberjack:client:notify', src, 'Tidak ada Batang Kayu di inventory.', 'error')
         return
     end
 
     -- Remove all logs and add sawdust yield
-    local removed = ox_inventory:RemoveItem(src, logItem, count)
+    local removed = Inventory.RemoveItem(src, logItem, count)
     if not removed then
         TriggerClientEvent('lumberjack:client:notify', src, 'Gagal memproses. Coba lagi.', 'error')
         return
     end
 
     local yield = (Config.ProcessYield or 2) * count
-    local added = ox_inventory:AddItem(src, sawItem, yield)
+    local added = Inventory.AddItem(src, sawItem, yield)
     if not added then
         -- try to refund logs if add failed
-        ox_inventory:AddItem(src, logItem, count)
+        Inventory.AddItem(src, logItem, count)
         TriggerClientEvent('lumberjack:client:notify', src, 'Gagal memberi Bubuk Kayu. Item dikembalikan.', 'error')
         return
     end

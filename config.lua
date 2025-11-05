@@ -1,5 +1,12 @@
 Config = {}
 
+-- Pilih inventory system: ox, qb, qs, codem
+-- ox = ox_inventory
+-- qb = qb-inventory
+-- qs = qs-inventory
+-- codem = codem-inventory
+Config.Inventory = "ox"
+
 -- Pilih target: otomatis deteksi ox_target atau qb-target
 -- Tidak perlu ubah jika keduanya/ salah satu sudah terpasang
 Config.TreeRespawnMinutes = 10            -- Waktu respawn pohon setelah ditebang

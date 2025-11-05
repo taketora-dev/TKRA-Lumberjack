@@ -2,9 +2,9 @@ fx_version 'cerulean'
 game 'gta5'
 
 name "oc-lumberjack"
-description "Simple Lumberjack (standalone, no job) with target + ox_inventory"
+description "Simple Lumberjack (standalone, no job) with target + multi-inventory support (ox/qb/qs/codem)"
 author "Taketora"
-version "1.0.0"
+version "1.1.0"
 
 lua54 'yes'
 
@@ -12,14 +12,19 @@ shared_scripts {
 	'config.lua'
 }
 
-client_scripts {
-	'client.lua'
+server_scripts {
+	'inventory/*.lua',
+	'server/sv_lumberjack.lua'
 }
 
-server_scripts {
-	'server.lua'
+client_scripts {
+	'client/cl_lumberjack.lua'
 }
 
 dependencies {
-	'ox_inventory'
+	-- Optional: depends on your Config.Inventory setting
+	-- 'ox_inventory',
+	-- 'qb-inventory',
+	-- 'qs-inventory',
+	-- 'codem-inventory',
 }
